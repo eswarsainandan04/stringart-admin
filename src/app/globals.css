@@ -1,26 +1,281 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Accent Colors */
+  --hs-gold-primary: #e5c044;
+  --hs-gold-hover: #d4ae33;
+  --hs-gold-light: #f5dc78;
+  --hs-gold-glow: rgba(229, 192, 68, 0.25);
+
+  /* Dark Bases */
+  --hs-black: #0a0a0a;
+  --hs-black-header: #000000;
+  --hs-dark-teal: #112826;
+  --hs-dark-teal-surface: #163330;
+  --hs-dark-teal-border: #234a45;
+  --hs-dark-teal-input: #0d211f;
+
+  /* Warm Cream Canvas */
+  --hs-cream-bg: #f3efe8;
+  --hs-cream-card: #faf7f2;
+
+  /* Typography Colors */
+  --hs-text-white: #ffffff;
+  --hs-text-dark: #0e1f1c;
+  --hs-text-muted: #576b65;
+  --hs-text-muted-light: #8da69f;
+  --hs-text-gold: #e5c044;
+
+  /* Component Radii */
+  --hs-radius-pill: 9999px;
+  --hs-radius-card: 20px;
+  --hs-radius-input: 12px;
+
+  /* Elevation / Shadows */
+  --hs-shadow-card: 0 20px 48px rgba(17, 40, 38, 0.35);
+  --hs-shadow-gold: 0 6px 20px rgba(229, 192, 68, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-hs-gold-primary: #e5c044;
+  --color-hs-gold-hover: #d4ae33;
+  --color-hs-gold-light: #f5dc78;
+  --color-hs-dark-teal: #112826;
+  --color-hs-dark-teal-surface: #163330;
+  --color-hs-dark-teal-border: #234a45;
+  --color-hs-dark-teal-input: #0d211f;
+  --color-hs-cream-bg: #f3efe8;
+  --color-hs-cream-card: #faf7f2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--hs-cream-bg);
+  color: var(--hs-text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
 }
+
+/* Custom theme utility classes */
+.hs-btn-gold {
+  background-color: var(--hs-gold-primary);
+  color: #000000;
+  border-radius: var(--hs-radius-pill);
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.hs-btn-gold:hover {
+  background-color: var(--hs-gold-hover);
+  box-shadow: var(--hs-shadow-gold);
+}
+
+.hs-card-teal {
+  background-color: var(--hs-dark-teal);
+  border: 1px solid var(--hs-dark-teal-border);
+  border-radius: var(--hs-radius-card);
+  color: var(--hs-text-white);
+  box-shadow: var(--hs-shadow-card);
+}
+
+/* react-country-state-city modern clean styling */
+.stdropdown-container {
+  border: 1px solid #d4d4d8 !important;
+  border-radius: 0.75rem !important;
+  background-color: #ffffff !important;
+  color: #18181b !important;
+  font-size: 0.75rem !important;
+  min-height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all 0.15s ease !important;
+  width: 100% !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  position: relative !important;
+}
+
+.stdropdown-container:focus-within,
+.stdropdown-container:has(.stdropdown-menu) {
+  border-color: #e5c044 !important;
+  box-shadow: 0 0 0 2px rgba(229, 192, 68, 0.25) !important;
+  z-index: 60 !important;
+}
+
+/* Remove all inner borders from inside the fields */
+.stdropdown-input {
+  padding: 6px 12px !important;
+  width: 100% !important;
+  cursor: pointer !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.stdropdown-container input,
+.stdropdown-input input,
+.stdropdown-container .stsearch-box input {
+  font-size: 0.75rem !important;
+  color: #18181b !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Dropdown menu opens on TOP of the field */
+.stdropdown-menu {
+  position: absolute !important;
+  bottom: 100% !important;
+  top: auto !important;
+  left: 0 !important;
+  transform: none !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #e4e4e7 !important;
+  box-shadow: 0 -12px 28px rgba(0, 0, 0, 0.18), 0 -4px 10px rgba(0, 0, 0, 0.08) !important;
+  background-color: #ffffff !important;
+  z-index: 99999 !important;
+  max-height: 220px !important;
+  margin-bottom: 6px !important;
+  margin-top: 0 !important;
+  width: 100% !important;
+  overflow-y: auto !important;
+}
+
+.stdropdown-item {
+  padding: 7px 12px !important;
+  font-size: 0.75rem !important;
+  color: #27272a !important;
+  cursor: pointer !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.stdropdown-item:hover {
+  background-color: #f4f4f5 !important;
+}
+
+.stdropdown-item.selected {
+  background-color: #112826 !important;
+  color: #e5c044 !important;
+  font-weight: 600 !important;
+}
+
+/* Only the search box INSIDE the open dropdown menu gets a clean search border */
+.stdropdown-menu .stsearch-box {
+  padding: 6px 8px !important;
+  border-bottom: 1px solid #f4f4f5 !important;
+}
+
+.stdropdown-menu .stsearch-box input {
+  border: 1px solid #e4e4e7 !important;
+  border-radius: 0.5rem !important;
+  padding: 5px 8px !important;
+  font-size: 0.75rem !important;
+  outline: none !important;
+  background: #fafafa !important;
+}
+
+.stdropdown-menu .stsearch-box input:focus {
+  border-color: #e5c044 !important;
+  background: #ffffff !important;
+}
+
+/* Phone Unified Input Box matching the user's exact UI screenshot */
+.phone-unified-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d4d4d8;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  overflow: visible;
+  position: relative;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  min-height: 38px;
+}
+
+.phone-unified-container:focus-within,
+.phone-unified-container:has(.stdropdown-menu) {
+  border-color: #e5c044;
+  box-shadow: 0 0 0 2px rgba(229, 192, 68, 0.3);
+  z-index: 60;
+}
+
+.phone-unified-container .phone-code-addon {
+  width: 95px;
+  flex-shrink: 0;
+  background-color: #f4f4f5;
+  border-right: 1px solid #d4d4d8;
+  border-top-left-radius: 0.7rem;
+  border-bottom-left-radius: 0.7rem;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  position: relative;
+}
+
+.phone-unified-container .phone-code-addon .stdropdown-container {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  min-height: 38px !important;
+  height: 100% !important;
+}
+
+.phone-unified-container .phone-code-addon .stdropdown-input {
+  padding: 6px 6px 6px 10px !important;
+  border: none !important;
+}
+
+.phone-unified-container .phone-code-addon .stdropdown-input input,
+.phone-unified-container .phone-code-addon .stsearch-box input {
+  padding: 0 !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  color: #18181b !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.phone-unified-container .phone-code-addon .stdropdown-menu {
+  position: absolute !important;
+  bottom: 100% !important;
+  top: auto !important;
+  left: 0 !important;
+  transform: none !important;
+  width: 270px !important;
+  margin-bottom: 6px !important;
+  margin-top: 0 !important;
+  z-index: 99999 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 -12px 28px rgba(0, 0, 0, 0.18), 0 -4px 10px rgba(0, 0, 0, 0.08) !important;
+  background-color: #ffffff !important;
+  overflow-y: auto !important;
+}
+
+.phone-unified-container input.phone-number-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: transparent;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 0.75rem;
+  color: #18181b;
+}
+
+.phone-unified-container input.phone-number-input::placeholder {
+  color: #a1a1aa;
+}
+
+
+
